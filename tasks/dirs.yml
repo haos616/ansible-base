@@ -1,0 +1,8 @@
+- assert:
+    that:
+     - "user is defined"
+     - "user_dirs is defined"
+
+- name: Creates directories
+  file: path="{{ item }}" owner="{{ user }}" group="{{ user }}" state=directory
+  with_items: "{{ user_dirs }}"

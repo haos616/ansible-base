@@ -1,0 +1,5 @@
+- name: Install sudo
+  apt: name=sudo
+
+- apt: name={{ item }}
+  with_items: {{ system_packages }}

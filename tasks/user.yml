@@ -1,0 +1,13 @@
+- assert:
+    that:
+     - "user is defined"
+
+- name: Add user {{ user }}
+  user: name="{{ user }}" shell=/bin/bash
+
+- name: Create SSH key for user "{{ user }}"
+  user: name="{{ user }}" generate_ssh_key=yes
+  register: result
+
+- name: SSH public key {{ user }}
+  debug: msg={{ result.ssh_public_key }}

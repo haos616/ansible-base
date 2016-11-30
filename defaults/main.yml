@@ -1,0 +1,29 @@
+home_dir: "/home"
+
+user_dir: "/{{ home_dir }}/{{ user }}"
+
+backups_dir: "{{ user_dir }}/backups"
+backups_dir_date: "{{ backups_dir }}/{{ date.stdout_lines.0 }}"
+backups_dir_now: "{{ backups_dir_date }}/{{ time.stdout_lines.0 }}"
+
+log_max_size: 5242880
+
+user_logs_dir: "{{ user_dir }}/logs"
+user_configs_dir: "{{ user_dir }}/configs"
+
+password_length: '33'
+password_dir: '{{ playbook_dir }}/passwords/'
+
+system_packages:
+  - git
+  - binutils
+  - make
+  - gcc
+  - g++
+  - openssl
+  - libssl-dev
+
+user_dirs:
+  - "{{ user_logs_dir }}"
+  - "{{ user_configs_dir }}"
+  - "{{ backups_dir }}"
